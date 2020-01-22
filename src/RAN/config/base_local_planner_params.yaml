@@ -1,0 +1,34 @@
+controller_frequency: 5.0
+
+TrajectoryPlannerROS:
+  #Set the velocity limits of the robot
+  max_vel_x: 0.45
+  min_vel_x: -30
+  max_vel_theta: 1.0
+  min_in_place_vel_theta: 0.4
+  
+  #Set the acceleration limits of the robot
+  acc_lim_theta: 3.2
+  acc_lim_x: 2.5
+  acc_lim_y: 2.5
+
+  #The velocity the robot will command when trying to escape from a stuck situation
+  escape_vel: -0.1
+
+  holonomic_robot: true
+  
+  #Set the tolerance on achieving a goal
+  xy_goal_tolerance: 0.05
+  yaw_goal_tolerance: 0.05
+  latch_xy_goal_tolerance: false
+  #We'll use the Dynamic Window Approach to control instead of Trajectory Rollout for this example
+  dwa: true
+  
+  #We'll configure how long and with what granularity we'll forward simulate trajectories
+  sim_time: 1
+  sim_granularity: 0.025
+  angular_sim_granularity: 0.025
+  vx_samples: 8
+  vtheta_samples: 20
+
+  meter_scoring: true

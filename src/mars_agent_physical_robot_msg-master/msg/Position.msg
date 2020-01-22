@@ -1,0 +1,3 @@
+mars_common_msgs/Id robot_id
+geometry_msgs/PoseStamped current_position
+geometry_msgs/Twist current_velocity

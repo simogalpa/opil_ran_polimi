@@ -1,0 +1,8 @@
+prefix=/home/lcr/catkin_ws/install
+
+Name: sim_msgs
+Description: Description of sim_msgs
+Version: 0.0.0
+Cflags: -I/home/lcr/catkin_ws/install/include
+Libs: -L/home/lcr/catkin_ws/install/lib 
+Requires: geometry_msgs roscpp rospy std_msgs message_runtime actionlib industrial_msgs sensor_msgs mars_common_msgs mars_agent_physical_robot_msgs

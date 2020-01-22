@@ -1,0 +1,29 @@
+(cl:defpackage mars_agent_physical_robot_msgs-msg
+  (:use )
+  (:export
+   "<ACTIONASSIGNMENT>"
+   "ACTIONASSIGNMENT"
+   "<ACTUALSTATE>"
+   "ACTUALSTATE"
+   "<ASSIGNMENTSTATUS>"
+   "ASSIGNMENTSTATUS"
+   "<CANCELTASK>"
+   "CANCELTASK"
+   "<ERROR>"
+   "ERROR"
+   "<MOTION>"
+   "MOTION"
+   "<MOTIONASSIGNMENT>"
+   "MOTIONASSIGNMENT"
+   "<POSITION>"
+   "POSITION"
+   "<ROBOTACTION>"
+   "ROBOTACTION"
+   "<ROBOTAGENTPROPERTIES>"
+   "ROBOTAGENTPROPERTIES"
+   "<SEQUENCE>"
+   "SEQUENCE"
+   "<VEHICLETYPE>"
+   "VEHICLETYPE"
+  ))
+

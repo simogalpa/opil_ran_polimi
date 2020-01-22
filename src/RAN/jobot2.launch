@@ -1,0 +1,65 @@
+<launch>
+    <rosparam command="load" file="$(env HOME)/local_configuration.yaml" />
+
+    <include file="$(find lcr_driver)/launch/lcr_robot.launch"/>
+    <include file="$(find lcr_navigation)/launch/rplidar_laser_a3.launch"/>
+    <include file="$(find lcr_navigation)/launch/lcr_tf_launch.launch"/>
+<!-- <include file="$(find lcr__utils)/launch/camera.launch"/> -->
+    <include file="$(find lcr_navigation)/launch/firstEKF.launch"/>
+<!-- <include file="$(find lcr_cam_utils)/launch/april_tags.launch"/>-->
+    <include file="$(find lcr_driver)/launch/lcr_joy.launch"/>
+<!--    <node ns="lcr_1" name="recharge_controller_tag" pkg="low_level_control" type="recharge_controller_tag"/> -->
+
+    <param name="/use_sim_time" value="false"/>
+    <!-- Run FIROS --> 
+    <node name="firos" pkg="firos" type="core.py" />      
+    <!-- Run the map server --> 
+    <node ns="lcr_1" name="map_server" pkg="map_server" type="map_server" args="$(find RAN)/map/map2.yaml" respawn="false"> <!--prima non c'era il respawn-->
+       <param name="frame_id" value="map" /> 
+     </node>
+
+<!-- BEGIN ROBOT 0 -->
+    <!--<group ns="robot_0">-->
+        <!--<param name="tf_prefix" value="robot_0" />-->
+        <include file="$(find RAN)/amcl_config_jobot.xml">
+            <arg name="initial_pose_x" value="0.0" />
+	    <arg name="initial_pose_y" value="0.0" />
+            <arg name="initial_pose_a" value="0.0" />
+            <!--<arg name="tf_prefix" value="robot_0"/>-->
+        </include>
+        <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+            <remap from="map" to="/lcr_1/map" />
+	    <remap from="cmd_vel" to="/lcr_1/cmd_vel"/>
+	    <remap from="base_pose_ground_truth" to="/lcr_1/odom"/>
+	    <remap from="odom" to="/lcr_1/odom"/>
+            <param name="controller_frequency" value="10.0" />
+            <rosparam file="$(find RAN)/config/jobot_costmap_common_params.yaml" command="load" ns="global_costmap" /> 
+ 	    <rosparam file="$(find RAN)/config/jobot_obstacle.yaml" command="load" ns="costmap_prohibition_layer" />
+      	    <rosparam file="$(find RAN)/config/jobot_costmap_common_params.yaml" command="load" ns="local_costmap" />
+            <rosparam file="$(find RAN)/config/jobot_global_costmap_params.yaml" command="load" />
+            <rosparam file="$(find RAN)/config/jobot_local_costmap_params.yaml" command="load" />      
+            <rosparam file="$(find RAN)/config/jobot_base_local_planner_params.yaml" command="load" /> 
+        </node>
+        
+        <node pkg="fake_localization" type="fake_localization" name="fake_localization"
+            respawn="false" output="screen">
+            <!--<param name="odom_frame_id" value="robot_0/odom" />-->
+            <!--<param name="base_frame_id" value="robot_0/base_link" />-->
+        </node>
+               
+         <!--- Run the Robot Agent node -->
+         <node name="robot_agent_AGV" pkg="RAN" type="RAN_robot_agent_with_AGV_simulation" output="screen" args="0">
+            <remap from="map" to="/lcr_1/map" />
+	    <remap from="cmd_vel" to="/lcr_1/cmd_vel"/>
+	    <remap from="/base_pose_ground_truth" to="/lcr_1/odom"/>
+	    <remap from="odom" to="/lcr_1/odom"/>
+         <param name="robot_id" value="fb3d75a1-a825-50ff-b3e6-e4b2bcae482e"/>
+         </node>
+	<node name="Action_manager" pkg="RAN" type="action_manager" output ="screen">
+	</node>
+	 <node name="msg_sim" pkg="sim_msgs" type="sim_msgs_sim_msg" output="screen" args="0">
+         </node>
+    <!--</group>-->
+    <!-- END ROBOT 0 -->     
+    
+</launch>

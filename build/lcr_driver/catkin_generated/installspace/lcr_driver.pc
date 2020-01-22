@@ -1,0 +1,8 @@
+prefix=/home/lcr/catkin_ws/install
+
+Name: lcr_driver
+Description: Description of lcr_driver
+Version: 0.0.0
+Cflags: -I/home/lcr/catkin_ws/install/include
+Libs: -L/home/lcr/catkin_ws/install/lib 
+Requires: roscpp dynamic_reconfigure

@@ -1,0 +1,6 @@
+prohibition_areas:
+ # your first prohibite
+ # it will become the thickness of the costmap resolution
+ - [[0.00, 0.00],
+    [18.26, 15.11]]
+

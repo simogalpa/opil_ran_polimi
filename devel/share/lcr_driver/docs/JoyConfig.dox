@@ -1,0 +1,11 @@
+\subsubsection parameters ROS parameters
+
+Reads and maintains the following parameters on the ROS server
+
+- \b "~cfg_Acc_Lin" : \b [double] Linear Acc min: 0.001, default: 0.025, max: 0.1
+- \b "~cfg_Dec_Lin" : \b [double] Linear Dec min: 0.001, default: 0.05, max: 0.1
+- \b "~cfg_Acc_Ang" : \b [double] Angular Acc min: 0.001, default: 0.025, max: 0.1
+- \b "~cfg_Dec_Ang" : \b [double] Angular Dec min: 0.001, default: 0.05, max: 0.1
+- \b "~cfg_MAX_Lin" : \b [double] Max Vel linear min: 0.1, default: 0.3, max: 1.0
+- \b "~cfg_MAX_Ang" : \b [double] Max Vel Ang min: 0.01, default: 0.4, max: 5.0
+

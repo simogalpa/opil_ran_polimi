@@ -1,0 +1,6 @@
+Header header
+bool complete_opened_doors
+bool complete_closed_doors
+bool busy
+bool zero_floor
+bool first_floor

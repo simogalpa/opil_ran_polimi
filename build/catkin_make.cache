@@ -1,0 +1,2 @@
+RAN:firos:lcr_driver:lcr_navigation:lcr_rplidar_ros:lcr_shared:mars_agent_physical_robot_msg-master:mars_common_msgs-master:sim_msgs
+-DCATKIN_DEVEL_PREFIX=/home/lcr/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/lcr/catkin_ws/install -G Unix Makefiles

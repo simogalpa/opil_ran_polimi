@@ -1,0 +1,12 @@
+\subsubsection usage Usage
+\verbatim
+<node name="lcr_driver" pkg="lcr_driver" type="lcr_driver">
+  <param name="cfg_Acc_Lin" type="double" value="0.025" />
+  <param name="cfg_Dec_Lin" type="double" value="0.05" />
+  <param name="cfg_Acc_Ang" type="double" value="0.025" />
+  <param name="cfg_Dec_Ang" type="double" value="0.05" />
+  <param name="cfg_MAX_Lin" type="double" value="0.3" />
+  <param name="cfg_MAX_Ang" type="double" value="0.4" />
+</node>
+\endverbatim
+

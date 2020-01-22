@@ -1,0 +1,5 @@
+string action # "goto" , "open" , "close"
+int8 desired_floor
+---
+bool success
+string message
